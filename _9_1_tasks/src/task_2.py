@@ -7,7 +7,10 @@
 Пример вывода:
 [121, 131, 34543]"""
 
+
 def palindrome_numbers(numbers: list[int]) -> list[int]:
     return [x for x in numbers if str(x) == str(x)[::-1]]
 
-print(palindrome_numbers([121, 123, 131, 35543]))
+
+if __name__ == "__main__":
+    print(palindrome_numbers([121, 123, 131, 34543]))

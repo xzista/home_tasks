@@ -1,6 +1,7 @@
 """Напишите декоратор, который проверяет,
- что все числа, возвращаемые декорируемой функцией,
- являются целыми, и округляет их до целых, если это не так."""
+что все числа, возвращаемые декорируемой функцией,
+являются целыми, и округляет их до целых, если это не так."""
+
 
 def decorate_check_integers(func):
     def wrapper(*args, **kwargs):
@@ -12,18 +13,22 @@ def decorate_check_integers(func):
         elif type(result) == float:
             return round(result)
         elif type(result) == str:
-            if '.' in result:
-                new_result = result.replace('.', '')
+            if "." in result:
+                new_result = result.replace(".", "")
                 if new_result.isdigit():
                     return type(result), str(round(float(result)))
             else:
                 return result
         else:
             return result
+
     return wrapper
+
 
 @decorate_check_integers
 def numbers():
-    return ['12.6', 12.2, 12.6]
+    return ["12.6", 12.2, 12.6]
 
-print(numbers())
+
+if __name__ == "__main__":
+    print(numbers())
