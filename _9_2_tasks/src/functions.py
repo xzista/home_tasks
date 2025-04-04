@@ -18,7 +18,6 @@ def name_str_from_file(file: str) -> list:
     with open(file_path, 'r', encoding='utf-8') as f:
         name_list = f.readlines()
     new_list = []
-    print(name_list)
     for name in name_list:
         new_name = ''
         for char in name:
@@ -29,8 +28,8 @@ def name_str_from_file(file: str) -> list:
     return new_list
 
 
-if __name__ == '__main__':
-    print(name_str_from_file('names.txt'))
+#if __name__ == '__main__':
+#    print(name_str_from_file('names.txt'))
 
 """Напишите другие функции, позволяющие из списка имен получать только русские и английские 
 и записывать эти имена в файл в отсортированном виде. 
