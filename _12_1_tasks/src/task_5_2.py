@@ -15,17 +15,16 @@ def log_stat(func):
 по количеству отфильтрованных транзакций"""
     def wrapper(*args, **kwargs):
         result_func = func(*args, **kwargs)
-        count = len(result_func)
         sum_price = [abs(price['amount']) for price in result_func]
-        print('Абсолютная суммарная стоимость: ', sum(sum_price))
-        print('Количество отфильтрованных транзакций: ', count)
+        print(f'Абсолютная суммарная стоимость: {sum(sum_price)}\n'
+              f'Количество отфильтрованных транзакций: {len(result_func)}\n')
     return wrapper
 
 
 @log_stat
 def filtered_transactions(input_file, output_file, filter_by_currency='USD'):
     """Функция фильтрует данные в JSON файле по валюте, и сохраняет в новый файл результат"""
-    with open('../data/' + input_file) as file:
+    with open('../data/' + input_file, 'r') as file:
         dict_data = json.load(file)
     filtered_data = [data for data in dict_data if data['currency'] == filter_by_currency]
     with open('../data/' + output_file, 'w') as file:
